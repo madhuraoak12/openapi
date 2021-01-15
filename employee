@@ -16,7 +16,17 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/employee"
+                                        "properties" : [
+                                            {
+                                                "employeeId" : { "type" : "integer"}
+                                            },
+                                            {
+                                                "name" : {"type" : "string"}
+                                            },
+                                            {
+                                                "designation" : { "type" : "string" }
+                                            }
+                                        ]
                                     }
                                 }
                             }
