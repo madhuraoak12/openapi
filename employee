@@ -1,0 +1,137 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "employee",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/employees": {
+            "summary": "Path used to manage the list of employees.",
+            "description": "The REST endpoint/path used to list and create zero or more `employee` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/employee"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful response - returns an array of `employee` entities."
+                    }
+                },
+                "operationId": "getemployees",
+                "summary": "List All employees",
+                "description": "Gets a list of all `employee` entities."
+            },
+            "post": {
+                "requestBody": {
+                    "description": "A new `employee` to be created.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/employee"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "createemployee",
+                "summary": "Create a employee",
+                "description": "Creates a new instance of a `employee`."
+            }
+        },
+        "/employees/{employeeId}": {
+            "summary": "Path used to manage a single employee.",
+            "description": "The REST endpoint/path used to get, update, and delete single instances of an `employee`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/employee"
+                                }
+                            }
+                        },
+                        "description": "Successful response - returns a single `employee`."
+                    }
+                },
+                "operationId": "getemployee",
+                "summary": "Get a employee",
+                "description": "Gets the details of a single instance of a `employee`."
+            },
+            "put": {
+                "requestBody": {
+                    "description": "Updated `employee` information.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/employee"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "updateemployee",
+                "summary": "Update a employee",
+                "description": "Updates an existing `employee`."
+            },
+            "delete": {
+                "responses": {
+                    "204": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "deleteemployee",
+                "summary": "Delete a employee",
+                "description": "Deletes an existing `employee`."
+            },
+            "parameters": [
+                {
+                    "name": "employeeId",
+                    "description": "A unique identifier for a `employee`.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "employee": {
+                "description": "",
+                "type": "object"
+            }
+        },
+        "responses": {
+            "employeeById": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/employee"
+                        }
+                    }
+                },
+                "description": ""
+            }
+        }
+    }
+}
